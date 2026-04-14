@@ -19,7 +19,7 @@ export function Card({
 }: Props) {
   return (
     <div
-      className={`rounded-lg border border-[#E5E7EB] bg-white shadow-sm ${pad[padding]} ${className}`}
+      className={`rounded-lg border border-[#E5E7EB] shadow-sm ${pad[padding]} ${className}`}
       {...rest}
     >
       {children}

@@ -34,7 +34,9 @@ export const CALL_MODAL_THEMES: Record<
     waitingDot: "bg-[#2563EB]",
     connectedBar:
       "border-emerald-100 bg-emerald-50/60 text-[#065f46]",
-    scriptCard: "border-emerald-100/80 bg-[#f0fdf4]",
+    /* ! nötig: Card hat sonst bg-white — in Production gewinnt das oft */
+    scriptCard:
+      "!border !border-emerald-100/80 !bg-[#f0fdf4] !shadow-none",
     scriptLabel: "text-[#047857]",
     chipKlingelt:
       "!bg-[#DBEAFE] !text-[#1e40af] !ring-blue-200/60",
@@ -52,7 +54,8 @@ export const CALL_MODAL_THEMES: Record<
     waitingDot: "bg-indigo-500",
     connectedBar:
       "border-violet-200 bg-violet-50 text-violet-950",
-    scriptCard: "border-violet-200/90 bg-violet-50/80",
+    scriptCard:
+      "!border !border-violet-200/90 !bg-violet-50/80 !shadow-none",
     scriptLabel: "text-violet-900",
     chipKlingelt:
       "!bg-indigo-100 !text-indigo-900 !ring-indigo-200/80",
@@ -70,7 +73,7 @@ export const CALL_MODAL_THEMES: Record<
     waitingDot: "bg-amber-600",
     connectedBar:
       "border-teal-200 bg-teal-50 text-teal-950",
-    scriptCard: "border-stone-200 bg-stone-50",
+    scriptCard: "!border !border-stone-200 !bg-stone-50 !shadow-none",
     scriptLabel: "text-stone-700",
     chipKlingelt:
       "!bg-amber-100 !text-amber-950 !ring-amber-200/90",
