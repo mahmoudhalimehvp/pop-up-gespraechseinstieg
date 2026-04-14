@@ -95,6 +95,17 @@ export default function App() {
             <button
               type="button"
               className={`rounded-lg border px-3 py-1.5 text-sm font-medium ${
+                colorTheme === "defaultInk"
+                  ? "border-[#111827] bg-[#F3F4F6] text-[#111827]"
+                  : "border-[#E5E7EB] bg-white text-[#374151] hover:bg-[#F9FAFB]"
+              }`}
+              onClick={() => setColorTheme("defaultInk")}
+            >
+              Standard, schwarze Schrift
+            </button>
+            <button
+              type="button"
+              className={`rounded-lg border px-3 py-1.5 text-sm font-medium ${
                 colorTheme === "indigo"
                   ? "border-indigo-400 bg-indigo-50 text-indigo-900"
                   : "border-[#E5E7EB] bg-white text-[#374151] hover:bg-[#F9FAFB]"
@@ -113,6 +124,17 @@ export default function App() {
               onClick={() => setColorTheme("sand")}
             >
               Alternative Sand / Stein
+            </button>
+            <button
+              type="button"
+              className={`rounded-lg border px-3 py-1.5 text-sm font-medium ${
+                colorTheme === "sandInk"
+                  ? "border-stone-400 bg-stone-100 text-[#111827]"
+                  : "border-[#E5E7EB] bg-white text-[#374151] hover:bg-[#F9FAFB]"
+              }`}
+              onClick={() => setColorTheme("sandInk")}
+            >
+              Sand / Stein, schwarze Schrift
             </button>
           </div>
         </div>

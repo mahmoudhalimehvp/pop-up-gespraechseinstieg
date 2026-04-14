@@ -47,20 +47,6 @@ function PhoneIcon({ className }: { className?: string }) {
   );
 }
 
-function WaitingDots({ dotClass }: { dotClass: string }) {
-  return (
-    <span className="inline-flex items-center gap-1" aria-hidden>
-      <span
-        className={`h-1.5 w-1.5 animate-bounce rounded-full ${dotClass} [animation-delay:-0.3s]`}
-      />
-      <span
-        className={`h-1.5 w-1.5 animate-bounce rounded-full ${dotClass} [animation-delay:-0.15s]`}
-      />
-      <span className={`h-1.5 w-1.5 animate-bounce rounded-full ${dotClass}`} />
-    </span>
-  );
-}
-
 export function OutboundCallModal({
   open,
   onClose,
@@ -74,12 +60,10 @@ export function OutboundCallModal({
   const titleId = useId();
   const neutralSurface = surfaceVariant === "neutral";
   const theme = CALL_MODAL_THEMES[colorTheme];
-  const [waitElapsed, setWaitElapsed] = useState(0);
   const [endCallEmphasized, setEndCallEmphasized] = useState(false);
 
   useEffect(() => {
     if (!open) {
-      setWaitElapsed(0);
       setEndCallEmphasized(false);
       return;
     }
@@ -89,18 +73,6 @@ export function OutboundCallModal({
     const t0 = window.setTimeout(() => setEndCallEmphasized(true), 5_000);
     return () => window.clearTimeout(t0);
   }, [open]);
-
-  useEffect(() => {
-    if (!open || connectionStatus !== "dialing" || neutralSurface) {
-      setWaitElapsed(0);
-      return;
-    }
-
-    const id = window.setInterval(() => {
-      setWaitElapsed((s) => s + 1);
-    }, 1000);
-    return () => window.clearInterval(id);
-  }, [open, connectionStatus, neutralSurface]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -113,8 +85,6 @@ export function OutboundCallModal({
   if (!open) return null;
 
   const isDialing = connectionStatus === "dialing";
-  const mm = String(Math.floor(waitElapsed / 60)).padStart(2, "0");
-  const ss = String(waitElapsed % 60).padStart(2, "0");
 
   return (
     <div
@@ -177,36 +147,25 @@ export function OutboundCallModal({
                 className={`rounded-none border px-4 py-4 ${theme.hintCardBorder}`}
                 style={{ backgroundColor: theme.hintCardBg }}
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex min-w-0 items-start gap-3">
-                    <WaitingDots dotClass={theme.waitingDot} />
-                    <div className="min-w-0 space-y-2">
-                      <p
-                        className={`text-sm font-semibold leading-snug ${theme.hintTitle}`}
-                      >
-                        Hinweis: Bitte etwa 20 Sekunden warten. Das Telefon des
-                        Klienten klingelt gerade.
-                      </p>
-                      <ul
-                        className={`list-disc space-y-1.5 pl-4 text-sm leading-relaxed ${theme.hintList}`}
-                      >
-                        <li>
-                          Falls niemand abnimmt: Lege auf und gib die Anfrage
-                          frei. Freigabegrund: „Mailbox“.
-                        </li>
-                        <li>
-                          Falls Klient sich meldet: Nutze den Gesprächseinstieg
-                          unten.
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <span
-                    className={`shrink-0 tabular-nums text-xs font-semibold ${theme.hintTimer}`}
-                    aria-live="polite"
+                <div className="min-w-0 space-y-2">
+                  <p
+                    className={`text-sm font-semibold leading-snug ${theme.hintTitle}`}
                   >
-                    {mm}:{ss}
-                  </span>
+                    Hinweis: Bitte etwa 20 Sekunden warten. Das Telefon des
+                    Klienten klingelt gerade.
+                  </p>
+                  <ul
+                    className={`list-disc space-y-1.5 pl-4 text-sm leading-relaxed ${theme.hintList}`}
+                  >
+                    <li>
+                      Falls niemand abnimmt: Lege auf und gib die Anfrage frei.
+                      Freigabegrund: „Mailbox“.
+                    </li>
+                    <li>
+                      Falls Klient sich meldet: Nutze den Gesprächseinstieg
+                      unten.
+                    </li>
+                  </ul>
                 </div>
               </div>
             )}
