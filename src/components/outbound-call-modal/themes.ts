@@ -1,0 +1,81 @@
+/**
+ * Gleiche Struktur / gleicher Inhalt — nur andere Farbgebung.
+ * `default` = bisheriges Blau + Smaragd.
+ */
+export type OutboundCallColorTheme = "default" | "indigo" | "sand";
+
+export type CallModalThemeTokens = {
+  headerIcon: string;
+  hintCardBorder: string;
+  hintCardBg: string;
+  hintTitle: string;
+  hintList: string;
+  hintTimer: string;
+  waitingDot: string;
+  connectedBar: string;
+  scriptCard: string;
+  scriptLabel: string;
+  chipKlingelt: string;
+  chipVerbunden: string;
+  primaryClose: string;
+};
+
+export const CALL_MODAL_THEMES: Record<
+  OutboundCallColorTheme,
+  CallModalThemeTokens
+> = {
+  default: {
+    headerIcon: "bg-[#EFF6FF] text-[#2563EB]",
+    hintCardBorder: "border-blue-100",
+    hintCardBg: "#DBEAFE",
+    hintTitle: "text-[#1e3a8a]",
+    hintList: "text-[#1e40af] marker:text-[#2563EB]",
+    hintTimer: "text-[#1e40af]",
+    waitingDot: "bg-[#2563EB]",
+    connectedBar:
+      "border-emerald-100 bg-emerald-50/60 text-[#065f46]",
+    scriptCard: "border-emerald-100/80 bg-[#f0fdf4]",
+    scriptLabel: "text-[#047857]",
+    chipKlingelt:
+      "!bg-[#DBEAFE] !text-[#1e40af] !ring-blue-200/60",
+    chipVerbunden:
+      "!bg-emerald-50 !text-emerald-800 !ring-emerald-200/80",
+    primaryClose: "!bg-[#2563EB] hover:!bg-[#1d4ed8]",
+  },
+  indigo: {
+    headerIcon: "bg-indigo-50 text-indigo-600",
+    hintCardBorder: "border-indigo-200/80",
+    hintCardBg: "#E0E7FF",
+    hintTitle: "text-indigo-950",
+    hintList: "text-indigo-900 marker:text-indigo-500",
+    hintTimer: "text-indigo-800",
+    waitingDot: "bg-indigo-500",
+    connectedBar:
+      "border-violet-200 bg-violet-50 text-violet-950",
+    scriptCard: "border-violet-200/90 bg-violet-50/80",
+    scriptLabel: "text-violet-900",
+    chipKlingelt:
+      "!bg-indigo-100 !text-indigo-900 !ring-indigo-200/80",
+    chipVerbunden:
+      "!bg-violet-100 !text-violet-900 !ring-violet-300/70",
+    primaryClose: "!bg-indigo-600 hover:!bg-indigo-700",
+  },
+  sand: {
+    headerIcon: "bg-amber-50 text-amber-800",
+    hintCardBorder: "border-amber-200/90",
+    hintCardBg: "#FFFBEB",
+    hintTitle: "text-amber-950",
+    hintList: "text-amber-900 marker:text-amber-600",
+    hintTimer: "text-amber-800",
+    waitingDot: "bg-amber-600",
+    connectedBar:
+      "border-teal-200 bg-teal-50 text-teal-950",
+    scriptCard: "border-stone-200 bg-stone-50",
+    scriptLabel: "text-stone-700",
+    chipKlingelt:
+      "!bg-amber-100 !text-amber-950 !ring-amber-200/90",
+    chipVerbunden:
+      "!bg-teal-100 !text-teal-900 !ring-teal-300/70",
+    primaryClose: "!bg-stone-700 hover:!bg-stone-800",
+  },
+};
