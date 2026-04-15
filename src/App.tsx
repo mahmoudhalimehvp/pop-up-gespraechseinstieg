@@ -35,7 +35,7 @@ export default function App() {
     useState<CallConnectionStatus>("dialing");
   const [demoVersion, setDemoVersion] = useState<1 | 2>(1);
   const [colorTheme, setColorTheme] =
-    useState<OutboundCallColorTheme>("default");
+    useState<OutboundCallColorTheme>("blueStone");
 
   const surfaceVariant: OutboundCallSurfaceVariant =
     demoVersion === 2 ? "neutral" : "default";
@@ -102,6 +102,17 @@ export default function App() {
               onClick={() => setColorTheme("defaultInk")}
             >
               Standard, schwarze Schrift
+            </button>
+            <button
+              type="button"
+              className={`rounded-lg border px-3 py-1.5 text-sm font-medium ${
+                colorTheme === "blueStone"
+                  ? "border-blue-400 bg-[#DBEAFE] text-[#111827]"
+                  : "border-[#E5E7EB] bg-white text-[#374151] hover:bg-[#F9FAFB]"
+              }`}
+              onClick={() => setColorTheme("blueStone")}
+            >
+              Blau / Stein, schwarze Schrift
             </button>
             <button
               type="button"

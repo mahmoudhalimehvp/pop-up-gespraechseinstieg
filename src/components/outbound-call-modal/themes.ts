@@ -5,12 +5,15 @@
 export type OutboundCallColorTheme =
   | "default"
   | "defaultInk"
+  | "blueStone"
   | "indigo"
   | "sand"
   | "sandInk";
 
 export type CallModalThemeTokens = {
   headerIcon: string;
+  /** Wenn gesetzt: Farbe der Subline unter dem Titel (Standard: grau). */
+  headerSubline?: string;
   hintCardBorder: string;
   hintCardBg: string;
   hintTitle: string;
@@ -61,6 +64,25 @@ export const CALL_MODAL_THEMES: Record<
       "!bg-[#DBEAFE] !text-[#111827] !ring-blue-200/60",
     chipVerbunden:
       "!bg-emerald-50 !text-[#111827] !ring-emerald-200/80",
+    primaryClose: "!bg-[#2563EB] hover:!bg-[#1d4ed8] !text-white",
+  },
+  /** Hinweisbox blau, Gesprächseinstieg-Karte Stein, Schrift überall schwarz */
+  blueStone: {
+    headerIcon: "bg-[#EFF6FF] text-[#111827]",
+    headerSubline: "text-[#111827]",
+    hintCardBorder: "border-blue-100",
+    hintCardBg: "#DBEAFE",
+    hintTitle: "text-[#111827]",
+    hintList: "text-[#111827] marker:text-[#111827]",
+    connectedBar:
+      "border-stone-200 bg-stone-100 text-[#111827]",
+    scriptCard:
+      "!border !border-stone-200 !bg-stone-50 !shadow-none",
+    scriptLabel: "text-[#111827]",
+    chipKlingelt:
+      "!bg-[#DBEAFE] !text-[#111827] !ring-blue-200/60",
+    chipVerbunden:
+      "!bg-stone-100 !text-[#111827] !ring-stone-300/70",
     primaryClose: "!bg-[#2563EB] hover:!bg-[#1d4ed8] !text-white",
   },
   indigo: {

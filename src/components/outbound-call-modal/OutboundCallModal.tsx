@@ -116,7 +116,11 @@ export function OutboundCallModal({
                 >
                   Ausgehender Anruf
                 </h2>
-                <p className="mt-1 text-sm text-[#6B7280]">{subline}</p>
+                <p
+                  className={`mt-1 text-sm ${theme.headerSubline ?? "text-[#6B7280]"}`}
+                >
+                  {subline}
+                </p>
               </div>
             </div>
             {(!isDialing || !neutralSurface) && (
